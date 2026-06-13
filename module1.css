@@ -190,7 +190,7 @@ input[type="password"]:focus {
     .login-box h2 {
         font-size: 24px;
     }
-   .login-box step-1 p {
+   .login-box #step-1 p {
         font-size: 12px;
     }
     .letter-greeting {
