@@ -190,6 +190,9 @@ input[type="password"]:focus {
     .login-box h2 {
         font-size: 24px;
     }
+   .login-box p {
+        font-size: 12px;
+    }
     .letter-greeting {
         font-size: 18px;
         margin-bottom: 15px;
