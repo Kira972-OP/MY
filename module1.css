@@ -1,4 +1,6 @@
-/* รีเซ็ตค่าพื้นฐาน */
+/* =========================================
+   1. Base Setup (รีเซ็ตค่าพื้นฐาน)
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +8,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ตั้งค่าพื้นหลังสีชมพูไล่ระดับ */
 body {
     background: linear-gradient(135deg, #ffe6eb 0%, #ffc0cb 100%);
     height: 100vh;
@@ -17,7 +18,9 @@ body {
     position: relative;
 }
 
-/* คอนเทนเนอร์สำหรับหัวใจด้านหลังกล่อง */
+/* =========================================
+   2. Layout & Containers (การจัดวางและกล่องหลัก)
+   ========================================= */
 #heart-container {
     position: absolute;
     top: 0;
@@ -28,7 +31,6 @@ body {
     pointer-events: none;
 }
 
-/* ดีไซน์กล่องข้อความตรงกลาง (ค่าเริ่มต้นสำหรับมือถือทั่วไป) */
 .login-box {
     background-color: rgba(255, 255, 255, 0.95);
     padding: 20px;
@@ -41,21 +43,17 @@ body {
     border: 2px solid #ffb6c1;
     z-index: 10;
     position: relative;
-    /* min-height: 350px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: 2.5s;
+    transition: height 2.5s ease-in-out; /* ระบุ property ให้ชัดเจน */
 }
 
+/* =========================================
+   3. Typography & Elements (ข้อความและปุ่มต่างๆ)
+   ========================================= */
 .fade-content {
     transition: opacity 0.8s ease-in-out;
-}
-
-.login-box .hint {
-    margin-bottom: 20px;
-    margin-top: px;
-    /* color: #ffb54d; */
 }
 
 .login-box h2 {
@@ -67,6 +65,11 @@ body {
 .login-box p {
     color: #888;
     font-size: 16px;
+}
+
+.login-box .hint {
+    margin-bottom: 20px;
+    /* นำ margin-top: px; ที่ผิดพลาดออก */
 }
 
 .input-group {
@@ -114,14 +117,46 @@ input[type="password"]:focus {
     display: none; 
 }
 
+/* สไตล์จดหมาย (Step 2) */
+.letter-container {
+    text-align: left;
+    padding: 10px;
+}
+
+.letter-greeting {
+    color: #ff1493;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.letter-body {
+    color: #ff69b4;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.7;
+    text-indent: 40px;
+    margin-bottom: 30px;
+    word-wrap: break-word;
+}
+
+.letter-signature {
+    text-align: right;
+    color: #ff4d79;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* =========================================
+   4. Animations (เอฟเฟกต์การเคลื่อนไหว)
+   ========================================= */
 .heart-icon {
     color: #ff4d79;
     font-size: 50px;
     margin-bottom: 10px;
     animation: heartbeat 1.5s infinite;
 }
-
-
 
 @keyframes heartbeat {
     0% { transform: scale(1); }
@@ -142,64 +177,38 @@ input[type="password"]:focus {
     100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
 }
 
-
 /* =========================================
-   การตั้งค่า Responsive สำหรับอุปกรณ์ต่างๆ 
+   5. Responsive (รองรับอุปกรณ์ต่างๆ)
    ========================================= */
-.letter-container {
-    text-align: left; /* จัดข้อความชิดซ้ายเพื่อให้เหมือนโครงสร้างจดหมาย */
-    padding: 10px;
-}
-
-.letter-greeting {
-    color: #ff1493;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.letter-body {
-    color: #ff69b4;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.7;
-    text-indent: 40px; /* เพิ่มการย่อหน้าแรกให้อารมณ์เหมือนเขียนจดหมายจริง */
-    margin-bottom: 30px;
-    word-wrap: break-word;
-}
-
-.letter-signature {
-    text-align: right; /* จัดชื่อคนส่งชิดขวาของกล่อง */
-    color: #ff4d79;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-/* 1. สำหรับ iPhone 12 Pro Max (หน้าจอกว้างไม่เกิน 430px) */
+   
+/* สำหรับ iPhone 12 Pro Max (หน้าจอกว้างไม่เกิน 430px) */
 @media (max-width: 430px) {
     .login-box {
         height: 60%;
-        padding: 30px 20px; /* ลดระยะห่างด้านในไม่ให้เบียดขอบจอเกินไป */
-        /* min-height: 320px; */
+        padding: 30px 20px;
     }
     .login-box h2 {
         font-size: 24px;
     }
-    .love-title {
-        font-size: 40px; /* ปรับขนาดตัวอักษรไม่ให้ล้นกล่อง */
+    .letter-greeting {
+        font-size: 18px;
+        margin-bottom: 15px;
     }
-    .love-message {
+    .letter-body {
+        font-size: 16px;
+        text-indent: 30px;
+        line-height: 1.5;
+    }
+    .letter-signature {
         font-size: 18px;
     }
 }
 
-/* 2. สำหรับ iPad Air 6 (หน้าจอกว้างตั้งแต่ 820px ขึ้นไป) */
+/* สำหรับ iPad Air 6 (หน้าจอกว้างตั้งแต่ 820px ขึ้นไป) */
 @media (min-width: 820px) {
     .login-box {
-        max-width: 550px; /* ขยายกล่องให้ใหญ่สมส่วนกับหน้าจอ iPad */
+        max-width: 550px;
         padding: 60px;
-        /* min-height: 450px; */
     }
     .login-box h2 {
         font-size: 32px;
@@ -218,11 +227,19 @@ input[type="password"]:focus {
     .heart-icon {
         font-size: 60px;
     }
-    .love-title {
-        font-size: 60px; /* ให้คำว่า "รักนะค้าบบ" ใหญ่ขึ้นบนจอ iPad */
+    .letter-container {
+        padding: 20px;
     }
-    .love-message {
+    .letter-greeting {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    .letter-body {
+        font-size: 22px;
+        text-indent: 50px;
+        line-height: 1.8;
+    }
+    .letter-signature {
         font-size: 24px;
-        line-height: 1.6;
     }
 }
