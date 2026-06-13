@@ -35,17 +35,17 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
     text-align: center;
-    width: 90%;
+    width: 80%;
     max-width: 400px;
     height: 75%;
     border: 2px solid #ffb6c1;
     z-index: 10;
     position: relative;
-    min-height: 350px;
+    /* min-height: 350px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: 4s;
+    transition: 2.5s;
 }
 
 .fade-content {
@@ -181,7 +181,7 @@ input[type="password"]:focus {
     .login-box {
         height: 60%;
         padding: 30px 20px; /* ลดระยะห่างด้านในไม่ให้เบียดขอบจอเกินไป */
-        min-height: 320px;
+        /* min-height: 320px; */
     }
     .login-box h2 {
         font-size: 24px;
@@ -199,7 +199,7 @@ input[type="password"]:focus {
     .login-box {
         max-width: 550px; /* ขยายกล่องให้ใหญ่สมส่วนกับหน้าจอ iPad */
         padding: 60px;
-        min-height: 450px;
+        /* min-height: 450px; */
     }
     .login-box h2 {
         font-size: 32px;
