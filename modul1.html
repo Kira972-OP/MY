@@ -11,6 +11,7 @@
     <div id="heart-container"></div>
 
     <div class="login-box">
+        
         <div id="step-1" class="fade-content" style="opacity: 1;">
             <div class="heart-icon">❤️</div>
             <h2>มีความลับจะบอก...</h2>
@@ -28,13 +29,14 @@
         <div id="step-2" class="fade-content" style="opacity: 0; display: none;">
             <div class="letter-container">
                 <div class="letter-greeting">ถึง... น้องนัด ตัวเล็กของเค้า</div>
-                    <p class="letter-body">
-                        ขอบคุณที่เข้ามาในชีวิตของเค้านะะ การมีน้องนัดคือสิ่งที่ดีที่สุดในชีวิตเค้าเลย 
-                        อยากให้น้องนัดอยู่ในทุกช่วงชีวิตเลยย รักนะค้าบบ 😘
-                    </p>
+                <p class="letter-body">
+                    ขอบคุณที่เข้ามาในชีวิตของเค้านะะ การมีน้องนัดคือสิ่งที่ดีที่สุดในชีวิตเค้าเลย 
+                    อยากให้น้องนัดอยู่ในทุกช่วงชีวิตเลยย รักนะค้าบบ 😘
+                </p>
                 <div class="letter-signature">จาก... น้องกั๊ก 💖</div>
             </div>
         </div>
+
     </div>
 
     <script>
@@ -46,7 +48,7 @@
             const errorMessage = document.getElementById('error-message');
             const step1 = document.getElementById('step-1');
             const step2 = document.getElementById('step-2');
-            const login_box = document.getElementsByClassName('login-box');
+            const loginBox = document.querySelector('.login-box'); // ปรับให้กระชับขึ้น
 
             if (inputPassword === correctPassword) {
                 // ซ่อนข้อความแจ้งเตือน
@@ -55,12 +57,11 @@
                 // 1. ทำให้ส่วนแรกลดความสว่างลง (Fade Out)
                 step1.style.opacity = "0";
 
-                // 2. รอให้ Fade out เสร็จ (0.8 วินาทีตาม CSS) ค่อยสลับเนื้อหา
+                // 2. รอให้ Fade out เสร็จ ค่อยสลับเนื้อหา
                 setTimeout(() => {
                     step1.style.display = "none"; 
                     step2.style.display = "block"; 
-                    login_box[0].style.height = "40%";
-
+                    loginBox.style.height = "45%";
                     
                     // ปล่อยให้เบราว์เซอร์จัด Layout แป๊บนึง แล้วค่อย Fade in
                     setTimeout(() => {
