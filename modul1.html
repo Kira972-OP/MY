@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="module1.css">
+    <title>For You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="heart-container"></div>
+
+    <div class="login-box">
+        <div id="step-1" class="fade-content" style="opacity: 1;">
+            <div class="heart-icon">❤️</div>
+            <h2>มีความลับจะบอก...</h2>
+            <p>แต่ต้องรู้รหัสผ่านก่อนนะคนเก่ง</p>
+            <p class="hint">คำใบ้ : รหัสที่เราใช้เหมือนกัน รหัสอะไรน๊าา🤔</p>
+            
+            <div class="input-group">
+                <input type="password" id="secret-password" placeholder="ใส่รหัสผ่านที่นี่...">
+            </div>
+            
+            <button class="btn-submit" onclick="checkPassword()">เปิดความลับ</button>
+            <p id="error-message">รหัสยังไม่ถูกน้า ลองนึกดูดีๆ 😘</p>
+        </div>
+
+        <div id="step-2" class="fade-content" style="opacity: 0; display: none;">
+            <div class="letter-container">
+                <div class="letter-greeting">ถึง... น้องนัด ตัวเล็กของเค้า</div>
+                    <p class="letter-body">
+                        ขอบคุณที่เข้ามาในชีวิตของเค้านะะ การมีน้องนัดคือสิ่งที่ดีที่สุดในชีวิตเค้าเลย 
+                        อยากให้น้องนัดอยู่ในทุกช่วงชีวิตเลยย รักนะค้าบบ 😘
+                    </p>
+                <div class="letter-signature">จาก... น้องกั๊ก ❤️</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            // ตั้งรหัสผ่านที่นี่
+            const correctPassword = "1234"; 
+            
+            const inputPassword = document.getElementById('secret-password').value;
+            const errorMessage = document.getElementById('error-message');
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const login_box = document.getElementsByClassName('login-box');
+
+            if (inputPassword === correctPassword) {
+                // ซ่อนข้อความแจ้งเตือน
+                errorMessage.style.display = "none";
+
+                // 1. ทำให้ส่วนแรกลดความสว่างลง (Fade Out)
+                step1.style.opacity = "0";
+
+                // 2. รอให้ Fade out เสร็จ (0.8 วินาทีตาม CSS) ค่อยสลับเนื้อหา
+                setTimeout(() => {
+                    step1.style.display = "none"; 
+                    step2.style.display = "block"; 
+                    login_box[0].style.height = "50%";
+
+                    
+                    // ปล่อยให้เบราว์เซอร์จัด Layout แป๊บนึง แล้วค่อย Fade in
+                    setTimeout(() => {
+                        step2.style.opacity = "1";
+                    }, 50);
+
+                    // 3. เริ่มปล่อยหัวใจให้ลอยขึ้นมา
+                    createFloatingHearts();
+                }, 800);
+
+            } else {
+                errorMessage.style.display = "block";
+                document.getElementById('secret-password').value = ""; 
+            }
+        }
+
+        function createFloatingHearts() {
+            const container = document.getElementById('heart-container');
+            const numberOfHearts = 200; // จำนวนหัวใจที่จะให้ลอยขึ้นมา
+
+            for (let i = 0; i < numberOfHearts; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.classList.add('floating-heart');
+                    
+                    // สุ่มตำแหน่งซ้าย-ขวา
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    
+                    // สุ่มขนาดหัวใจ
+                    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    
+                    // สุ่มความเร็วในการลอย (ระหว่าง 3 ถึง 6 วินาที)
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+                    container.appendChild(heart);
+
+                    // ลบหัวใจทิ้งเมื่อลอยพ้นจอไปแล้ว (ลดการใช้หน่วยความจำ)
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+
+                }, i * 150); // ค่อยๆ ปล่อยหัวใจออกมาทีละดวง
+            }
+        }
+    </script>
+
+</body>
+</html>
