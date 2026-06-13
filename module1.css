@@ -198,7 +198,7 @@ input[type="password"]:focus {
         margin-bottom: 15px;
     }
     .letter-body {
-        font-size: 13px;
+        font-size: 13px !important;
         text-indent: 30px;
         line-height: 1.5;
     }
