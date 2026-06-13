@@ -194,16 +194,16 @@ input[type="password"]:focus {
         font-size: 12px;
     }
     .letter-greeting {
-        font-size: 18px;
+        font-size: 15px;
         margin-bottom: 15px;
     }
     .letter-body {
-        font-size: 16px;
+        font-size: 13px;
         text-indent: 30px;
         line-height: 1.5;
     }
     .letter-signature {
-        font-size: 18px;
+        font-size: 15px;
     }
 }
 
